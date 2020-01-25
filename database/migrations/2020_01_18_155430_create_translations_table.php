@@ -15,10 +15,16 @@ class CreateTranslationsTable extends Migration
     {
         Schema::create('translations', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('key_id', false, true);
             $table->string('language', 2);
-            $table->string('key', 255);
             $table->text('translation');
             $table->timestamps();
+
+            $table->foreign('key_id')
+                ->references('id')
+                ->on('translation_keys')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->index('language');
         });

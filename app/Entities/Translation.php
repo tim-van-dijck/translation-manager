@@ -1,6 +1,6 @@
 <?php
 
-namespace Entities;
+namespace App\Entities;
 
 use Illuminate\Support\Collection;
 
@@ -20,5 +20,19 @@ class Translation
     {
         $this->key = $key;
         $this->languages = $languages;
+    }
+
+    public function toArray()
+    {
+        $languages = [];
+
+        foreach ($this->languages as $language) {
+            $languages[$language->language] = $language->translation;
+        }
+
+        return [
+            'key' => $this->key,
+            'languages' => $languages
+        ];
     }
 }

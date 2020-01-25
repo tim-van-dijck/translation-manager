@@ -1,15 +1,24 @@
 <?php
 
-namespace Repositories;
+namespace App\Repositories;
 
 use App\Translation as TranslationModel;
-use Entities\Translation;
+use App\Entities\Translation;
+use App\TranslationKey;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class TranslationRepository
 {
-    public function get()
+    /**
+     * @param int $pageNumber
+     * @param int $pageSize
+     * @return LengthAwarePaginator
+     */
+    public function get(int $pageNumber = 1, int $pageSize = 50): LengthAwarePaginator
     {
-        Translation::get();
+        return TranslationKey::with(['translations' => function ($query) {
+            return $query->whereIn('language', ['nl', 'en', 'fr', 'de']);
+        }])->paginate($pageSize, ['*'], 'page[number]', $pageNumber);
     }
 
     /**
@@ -22,15 +31,20 @@ class TranslationRepository
         return new Translation($key, $translations);
     }
 
-    public function store(string $key, array $data)
+    public function store(string $key, array $data): Translation
     {
+        /** @var TranslationKey $key */
+        $translationKey = TranslationKey::create([
+            'key' => $key
+        ]);
+
         $languages = collect();
         foreach ($data as $language => $trans) {
             /** @var TranslationModel $translation */
             $translation = new TranslationModel();
-            $translation->key = $key;
+            $translation->key_id = $translationKey->id;
             $translation->language = $language;
-            $translation->translation = $trans;
+            $translation->translation = $trans['translation'];
             $translation->save();
             $languages->push($translation);
         }

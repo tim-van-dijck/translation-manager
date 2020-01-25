@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAppTranslationTable extends Migration
+class CreateAppTranslationKeyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateAppTranslationTable extends Migration
      */
     public function up()
     {
-        Schema::create('app_translation', function (Blueprint $table) {
+        Schema::create('app_translation_key', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('app_id', false, true);
-            $table->integer('translation_id', false, true);
+            $table->bigInteger('app_id', false, true);
+            $table->bigInteger('translation_key_id', false, true);
             $table->timestamps();
 
             $table->foreign('app_id')
@@ -25,7 +25,7 @@ class CreateAppTranslationTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreign('translation_id')
+            $table->foreign('translation_key_id')
                 ->references('id')
                 ->on('translations')
                 ->onUpdate('cascade')
@@ -40,6 +40,6 @@ class CreateAppTranslationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('app_translation');
+        Schema::dropIfExists('app_translation_key');
     }
 }

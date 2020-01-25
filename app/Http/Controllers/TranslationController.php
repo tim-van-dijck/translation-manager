@@ -2,40 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Translation;
 use Illuminate\Http\Request;
+use App\Repositories\TranslationRepository;
 
 class TranslationController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param TranslationRepository $translationRepository
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(TranslationRepository $translationRepository, Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $page = $request->get('page');
+        $translations = $translationRepository->get($page['number'] ?? 1, $page['size'] ?? 50);
+        return response()->json($translations);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TranslationRepository $translationRepository, Request $request)
     {
-        //
+        $this->validate($request, [
+            'key' => 'required|string|unique:translation_keys,key',
+            'languages.*.translation' => 'string'
+        ]);
+
+        $translation = $translationRepository->store($request->input('key'), $request->input('languages'));
+        return response()->json($translation->toArray());
     }
 
     /**
@@ -44,20 +44,9 @@ class TranslationController extends Controller
      * @param  \App\Translation  $translation
      * @return \Illuminate\Http\Response
      */
-    public function show(Translation $translation)
+    public function show(TranslationRepository $translationRepository, string $key)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Translation  $translation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Translation $translation)
-    {
-        //
+        return response()->json($translationRepository->find($key));
     }
 
     /**
@@ -67,9 +56,14 @@ class TranslationController extends Controller
      * @param  \App\Translation  $translation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Translation $translation)
+    public function update(TranslationRepository $translationRepository, Request $request, string $key)
     {
-        //
+        $this->validate($request, [
+            'key' => 'required|string|regex://',
+            'languages.*.translation' => 'string'
+        ]);
+
+        return response()->json($translationRepository->update($key, $request->input()));
     }
 
     /**
@@ -78,8 +72,8 @@ class TranslationController extends Controller
      * @param  \App\Translation  $translation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Translation $translation)
+    public function destroy(TranslationRepository $translationRepository, string $key)
     {
-        //
+        $translationRepository->destroy($key);
     }
 }

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 /**
  * Class App
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string name
  * @property string created_at
  * @property string updated_at
- * @property Translation[] translations
+ * @property Collection translations
  */
 class App extends Model
 {
@@ -24,6 +25,6 @@ class App extends Model
      */
     public function translations()
     {
-        return $this->belongsToMany(Translation::class);
+        return $this->belongsToMany(TranslationKey::class);
     }
 }
