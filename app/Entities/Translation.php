@@ -2,10 +2,15 @@
 
 namespace App\Entities;
 
+use App\Traits\HandleToJson;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Support\Collection;
 
-class Translation
+class Translation implements Arrayable, \ArrayAccess, Jsonable, \JsonSerializable
 {
+    use HandleToJson;
+
     /** @var string */
     private $key;
     /** @var Collection */
@@ -22,7 +27,7 @@ class Translation
         $this->languages = $languages;
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         $languages = [];
 

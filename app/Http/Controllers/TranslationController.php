@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TranslationResource;
 use Illuminate\Http\Request;
 use App\Repositories\TranslationRepository;
 
 class TranslationController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
      * @param TranslationRepository $translationRepository
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index(TranslationRepository $translationRepository, Request $request)
     {
         $page = $request->get('page');
         $translations = $translationRepository->get($page['number'] ?? 1, $page['size'] ?? 50);
-        return response()->json($translations);
+        return TranslationResource::collection($translations);
     }
 
     /**

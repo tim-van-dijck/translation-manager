@@ -1,0 +1,25 @@
+.btn {
+  border-radius: 0;
+}
+
+.btn-green {
+  background-color: #438c41;
+  border-color: #438c41;
+  color: #fff;
+}
+
+body#login {
+  background-image: url("https://timvandijck.com/assets/img/station.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+body#login form {
+  padding: 2rem;
+  width: 100%;
+  max-width: 450px;
+  background-color: #fff;
+  height: 100%;
+}
+

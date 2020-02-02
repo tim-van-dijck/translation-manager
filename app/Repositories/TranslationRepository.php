@@ -5,20 +5,28 @@ namespace App\Repositories;
 use App\Translation as TranslationModel;
 use App\Entities\Translation;
 use App\TranslationKey;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator as LengthAwarePaginatorInterface;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class TranslationRepository
 {
     /**
      * @param int $pageNumber
      * @param int $pageSize
-     * @return LengthAwarePaginator
+     * @return LengthAwarePaginatorInterface
      */
-    public function get(int $pageNumber = 1, int $pageSize = 50): LengthAwarePaginator
+    public function get(int $pageNumber = 1, int $pageSize = 50): LengthAwarePaginatorInterface
     {
-        return TranslationKey::with(['translations' => function ($query) {
+        $translations = TranslationKey::with(['translations' => function ($query) {
             return $query->whereIn('language', ['nl', 'en', 'fr', 'de']);
         }])->paginate($pageSize, ['*'], 'page[number]', $pageNumber);
+
+        $items = collect();
+
+        foreach ($translations as $translation) {
+            $items->push(new Translation($translation->key, $translation->translations->keyBy('language')));
+        }
+        return new LengthAwarePaginator($items, $translations->total(), $pageSize, $pageNumber, ['']);
     }
 
     /**
