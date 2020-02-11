@@ -11,7 +11,12 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
-        <div id="app" class="container">
+        <div id="app">
+            <navbar></navbar>
+            <div class="container">
+                <router-view></router-view>
+            </div>
         </div>
+        <script src="/js/app.js"></script>
     </body>
 </html>

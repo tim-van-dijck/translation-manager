@@ -23,3 +23,20 @@ body#login form {
   height: 100%;
 }
 
+.navbar {
+  background-color: #438c41;
+}
+
+.navbar li.active,
+.navbar li:hover,
+.navbar li:focus,
+.navbar li:active {
+  background-color: #295229;
+  margin: -8px 0;
+  padding: 8px 0;
+}
+
+.navbar a {
+  color: #fff;
+}
+

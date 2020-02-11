@@ -11,4 +11,4 @@ build:
 	docker-compose up --build
 
 access:
-	docker exec -it translation-$(INST) bash
+	docker exec -it translation-$(inst) bash

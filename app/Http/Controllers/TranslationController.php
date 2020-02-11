@@ -75,4 +75,16 @@ class TranslationController extends Controller
     {
         $translationRepository->destroy($key);
     }
+
+    public function system(string $language)
+    {
+        $translations = [];
+
+        foreach (['system', 'translation', 'language'] as $category) {
+            foreach (trans($category) as $key => $translation) {
+                $translations["$category.$key"] = $translation;
+            }
+        }
+        return response()->json($translations);
+    }
 }

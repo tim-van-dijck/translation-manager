@@ -15,3 +15,15 @@ body#login {
     height: 100%;
   }
 }
+
+.navbar {
+  background-color: $green;
+  li.active, li:hover, li:focus, li:active {
+    background-color: $darkGreen;
+    margin: -8px 0;
+    padding: 8px 0;
+  }
+  a {
+    color: #fff;
+  }
+}
