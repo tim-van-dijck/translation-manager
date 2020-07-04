@@ -1,7 +1,7 @@
 <?php
 
-use App\Translation;
-use App\TranslationKey;
+use App\Models\Translation;
+use App\Models\TranslationKey;
 use Illuminate\Database\Seeder;
 
 class TranslationsSeeder extends Seeder
@@ -17,11 +17,13 @@ class TranslationsSeeder extends Seeder
      */
     public function run()
     {
-        $this->keys = TranslationKey::get()->keyBy('key');
-        foreach (self::LANGUAGES as $language) {
-            $url = "http://s3-eu-west-1.amazonaws.com/viafutura-halito-translations/current/public/translations_{$language}.json";
-            $json = json_decode(file_get_contents($url), true);
-            $this->importTranslations($language, $json);
+        if (empty(Translation::first(['id']))) {
+            $this->keys = TranslationKey::get()->keyBy('key');
+            foreach (self::LANGUAGES as $language) {
+                $url = "http://s3-eu-west-1.amazonaws.com/viafutura-halito-translations/current/public/translations_{$language}.json";
+                $json = json_decode(file_get_contents($url), true);
+                $this->importTranslations($language, $json);
+            }
         }
     }
 

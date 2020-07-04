@@ -40,7 +40,7 @@ class TranslationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Translation  $translation
+     * @param  \App\Models\Translation  $translation
      * @return \Illuminate\Http\Response
      */
     public function show(TranslationRepository $translationRepository, string $key)
@@ -52,7 +52,7 @@ class TranslationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Translation  $translation
+     * @param  \App\Models\Translation  $translation
      * @return \Illuminate\Http\Response
      */
     public function update(TranslationRepository $translationRepository, Request $request, string $key)
@@ -68,7 +68,7 @@ class TranslationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Translation  $translation
+     * @param  \App\Models\Translation  $translation
      * @return \Illuminate\Http\Response
      */
     public function destroy(TranslationRepository $translationRepository, string $key)

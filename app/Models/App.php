@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\TranslationKey;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 

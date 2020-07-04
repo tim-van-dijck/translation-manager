@@ -1946,6 +1946,36 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/translations/TranslationForm.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/translations/TranslationForm.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "TranslationForm"
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/translations/TranslationOverview.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/translations/TranslationOverview.vue?vue&type=script&lang=js& ***!
@@ -1985,6 +2015,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TranslationOverview",
@@ -1992,7 +2042,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.$store.dispatch('translations/getLanguages');
     this.$store.dispatch('translations/get');
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('translations', ['translations', 'languages']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('translations', ['adminLanguages']))
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('translations', ['translations', 'languages']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['trans']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('translations', ['adminLanguages']), {
+    loaded: function loaded() {
+      return this.languages != null;
+    }
+  })
 });
 
 /***/ }),
@@ -20411,6 +20465,76 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/translations/TranslationForm.vue?vue&type=template&id=6b8966da&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/translations/TranslationForm.vue?vue&type=template&id=6b8966da& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    { attrs: { action: "" } },
+    [
+      _c("h1", [_vm._v(_vm._s(_vm._f("translate")("translations.edit")))]),
+      _vm._v(" "),
+      _c(
+        "router-link",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { tag: "button", to: { name: "translations" } }
+        },
+        [_vm._v("\n        « Back\n    ")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "key" } }, [
+          _vm._v(_vm._s(_vm._f("translate")("translation.key")))
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { id: "key", type: "text" }
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-green",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.save($event)
+            }
+          }
+        },
+        [_vm._v(_vm._s(_vm._f("translate")("system.save")))]
+      ),
+      _vm._v(" "),
+      _c("a", { staticClass: "btn btn-outline-danger", attrs: { href: "" } }, [
+        _vm._v(_vm._s(_vm._f("translate")("system.cancel")))
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/translations/TranslationOverview.vue?vue&type=template&id=a35b5170&":
 /*!***********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/translations/TranslationOverview.vue?vue&type=template&id=a35b5170& ***!
@@ -20426,53 +20550,115 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "translations" } }, [
-    _c("h1", [_vm._v("Translations")]),
-    _vm._v(" "),
-    _c("table", { staticClass: "table table-striped" }, [
-      _c("thead", [
-        _c(
-          "tr",
-          [
-            _c("th", [_vm._v(_vm._s(_vm._f("translate")("translation.key")))]),
+  return Object.keys(_vm.trans).length > 0
+    ? _c("div", { attrs: { id: "translations" } }, [
+        _c("h1", [_vm._v(_vm._s(_vm._f("translate")("translation.title")))]),
+        _vm._v(" "),
+        _c("p", [
+          _c("button", { staticClass: "btn btn-primary" }, [
+            _c("i", { staticClass: "fas fa-plus" }),
             _vm._v(" "),
-            _vm._l(_vm.adminLanguages, function(languages) {
-              return _c("th", [
-                _vm._v(_vm._s(_vm._f("translate")("language." + _vm.language)))
-              ])
-            })
-          ],
-          2
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.translations, function(translation) {
-          return _c(
-            "tr",
-            [
-              _c("td", [_vm._v(_vm._s(translation.key))]),
+            _c("span", [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm._f("translate")("system.add")) +
+                  "\n            "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm.adminLanguages.length > 0
+          ? _c("table", { staticClass: "table table-striped" }, [
+              _c("thead", [
+                _c(
+                  "tr",
+                  [
+                    _c("th", { staticClass: "table-cell--shrink" }),
+                    _vm._v(" "),
+                    _c("th", { staticClass: "table-cell--shrink" }),
+                    _vm._v(" "),
+                    _c("th", [
+                      _vm._v(_vm._s(_vm._f("translate")("translation.key")))
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.adminLanguages, function(language) {
+                      return _c("th", [
+                        _vm._v(_vm._s(_vm._f("translate")(language.name)))
+                      ])
+                    })
+                  ],
+                  2
+                )
+              ]),
               _vm._v(" "),
-              _vm._l(translation.languages, function(language) {
-                return _vm.adminLanguages.includes(language.key)
-                  ? _c("td", [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(_vm._f("truncate")(language.key)) +
-                          "\n                "
-                      )
-                    ])
-                  : _vm._e()
-              })
-            ],
-            2
-          )
-        }),
-        0
-      )
-    ])
-  ])
+              _c(
+                "tbody",
+                _vm._l(_vm.translations, function(translation) {
+                  return _c(
+                    "tr",
+                    [
+                      _c(
+                        "td",
+                        [
+                          _c(
+                            "router-link",
+                            {
+                              attrs: {
+                                to: {
+                                  name: "translations-edit",
+                                  params: { key: translation.key }
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fas fa-pencil-alt" })]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                              }
+                            }
+                          },
+                          [_c("i", { staticClass: "fas fa-trash" })]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(translation.key))]),
+                      _vm._v(" "),
+                      _vm._l(_vm.adminLanguages, function(language) {
+                        return _c("td", [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(
+                                _vm._f("truncate")(
+                                  translation.languages[language.key]
+                                )
+                              ) +
+                              "\n                "
+                          )
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                }),
+                0
+              )
+            ])
+          : _vm._e()
+      ])
+    : _c("p", { staticClass: "text-center" }, [
+        _c("i", { staticClass: "fas fa-cog fa-2x fa-spin" })
+      ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -36662,10 +36848,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
-var trans = {};
 var locale = document.documentElement.lang;
 axios.get("/system/translations/".concat(locale)).then(function (response) {
-  trans = response.data;
+  store.commit('SET_TRANS', response.data);
 });
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.filter('capitalize', function (value) {
   if (!value) {
@@ -36680,14 +36865,24 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.filter('translate', function (value) 
     return '';
   }
 
-  return trans.hasOwnProperty(value) ? trans[value] : value;
+  return store.state.trans.hasOwnProperty(value) ? store.state.trans[value] : value;
+});
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.filter('truncate', function (value) {
+  var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 30;
+  return value.length > length ? value.slice(0, length) + '...' : value;
 });
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
     translations: _modules_translations__WEBPACK_IMPORTED_MODULE_5__["translations"]
   },
   state: {
-    user: {}
+    user: {},
+    trans: {}
+  },
+  mutations: {
+    SET_TRANS: function SET_TRANS(state, trans) {
+      state.trans = trans;
+    }
   }
 });
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
@@ -36812,6 +37007,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/translations/TranslationForm.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/translations/TranslationForm.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TranslationForm_vue_vue_type_template_id_6b8966da___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TranslationForm.vue?vue&type=template&id=6b8966da& */ "./resources/js/components/translations/TranslationForm.vue?vue&type=template&id=6b8966da&");
+/* harmony import */ var _TranslationForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TranslationForm.vue?vue&type=script&lang=js& */ "./resources/js/components/translations/TranslationForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _TranslationForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TranslationForm_vue_vue_type_template_id_6b8966da___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TranslationForm_vue_vue_type_template_id_6b8966da___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/translations/TranslationForm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/translations/TranslationForm.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/translations/TranslationForm.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TranslationForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TranslationForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/translations/TranslationForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TranslationForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/translations/TranslationForm.vue?vue&type=template&id=6b8966da&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/translations/TranslationForm.vue?vue&type=template&id=6b8966da& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TranslationForm_vue_vue_type_template_id_6b8966da___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TranslationForm.vue?vue&type=template&id=6b8966da& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/translations/TranslationForm.vue?vue&type=template&id=6b8966da&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TranslationForm_vue_vue_type_template_id_6b8966da___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TranslationForm_vue_vue_type_template_id_6b8966da___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/translations/TranslationOverview.vue":
 /*!**********************************************************************!*\
   !*** ./resources/js/components/translations/TranslationOverview.vue ***!
@@ -36893,24 +37157,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "translations", function() { return translations; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+
 var translations = {
   namespaced: true,
   state: {
     page: 1,
     translations: {},
-    languages: []
+    languages: null
   },
   actions: {
     get: function get(_ref) {
       var state = _ref.state,
           commit = _ref.commit;
-      axios.get("/translations?page[number]=".concat(state.page || 1)).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/translations?page[number]=".concat(state.page || 1)).then(function (response) {
         commit('SET_TRANSLATIONS', response.data.data);
       });
     },
@@ -36947,25 +37214,33 @@ var translations = {
     },
     create: function create(_ref3, data) {
       var commit = _ref3.commit;
-      return axios.post('/translations', data).then(function (translation) {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/translations', data).then(function (translation) {
         commit('ADD_TRANSLATION', translation);
       });
     },
     update: function update(_ref4, data) {
       var commit = _ref4.commit;
-      return axios.put("/translations/".concat(data.key), data.translation).then(function (translation) {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("/translations/".concat(data.key), data.translation).then(function (translation) {
         commit('UPDATE_TRANSLATION', translation);
       });
     },
     destroy: function destroy(_ref5, key) {
       var commit = _ref5.commit;
-      return axios["delete"]("/translations/".concat(key)).then(function () {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]("/translations/".concat(key)).then(function () {
         commit('DELETE_TRANSLATION', key);
       });
     },
-    getLanguages: function getLanguages() {}
+    getLanguages: function getLanguages(_ref6) {
+      var commit = _ref6.commit;
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/languages").then(function (response) {
+        commit('SET_LANGUAGES', response.data.data);
+      });
+    }
   },
   mutations: {
+    SET_LANGUAGES: function SET_LANGUAGES(state, languages) {
+      state.languages = languages;
+    },
     SET_TRANSLATIONS: function SET_TRANSLATIONS(state, translations) {
       state.translations = translations;
     },
@@ -36990,6 +37265,10 @@ var translations = {
   },
   getters: {
     adminLanguages: function adminLanguages(state) {
+      if (state.languages == null) {
+        return [];
+      }
+
       return state.languages.filter(function (item) {
         return item.admin == 1;
       });
@@ -37008,7 +37287,9 @@ var translations = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_translations_TranslationOverview__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/translations/TranslationOverview */ "./resources/js/components/translations/TranslationOverview.vue");
+/* harmony import */ var _components_translations_TranslationForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/translations/TranslationForm */ "./resources/js/components/translations/TranslationForm.vue");
+/* harmony import */ var _components_translations_TranslationOverview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/translations/TranslationOverview */ "./resources/js/components/translations/TranslationOverview.vue");
+
 
 var routes = [{
   path: '/',
@@ -37016,9 +37297,16 @@ var routes = [{
 }, {
   path: '/translations',
   name: 'translations',
-  component: _components_translations_TranslationOverview__WEBPACK_IMPORTED_MODULE_0__["default"],
+  component: _components_translations_TranslationOverview__WEBPACK_IMPORTED_MODULE_1__["default"],
   meta: {
     title: 'Translations'
+  }
+}, {
+  path: '/translations/:key/edit',
+  name: 'translations-edit',
+  component: _components_translations_TranslationForm__WEBPACK_IMPORTED_MODULE_0__["default"],
+  meta: {
+    title: 'Edit translation'
   }
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);

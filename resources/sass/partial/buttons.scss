@@ -9,3 +9,12 @@
   border-color: $green;
   color: #fff;
 }
+
+a>i {
+  &.fas, &.far {
+    color: black;
+  }
+  &.fa-trash {
+    color: red;
+  }
+}

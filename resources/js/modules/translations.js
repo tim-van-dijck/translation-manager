@@ -1,9 +1,11 @@
+import axios from 'axios';
+
 export const translations = {
     namespaced: true,
     state: {
         page: 1,
         translations: {},
-        languages: []
+        languages: null
     },
     actions: {
         get({state, commit}) {
@@ -38,11 +40,17 @@ export const translations = {
                     commit('DELETE_TRANSLATION', key);
                 });
         },
-        getLanguages() {
-
+        getLanguages({commit}) {
+            axios.get(`/languages`)
+                .then((response) => {
+                    commit('SET_LANGUAGES', response.data.data);
+                });
         }
     },
     mutations: {
+        SET_LANGUAGES(state, languages) {
+            state.languages = languages;
+        },
         SET_TRANSLATIONS(state, translations) {
             state.translations = translations;
         },
@@ -62,6 +70,9 @@ export const translations = {
     },
     getters: {
         adminLanguages(state) {
+            if (state.languages == null) {
+                return [];
+            }
             return state.languages.filter((item) => {
                 return item.admin == 1;
             });

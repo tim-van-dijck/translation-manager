@@ -10,11 +10,10 @@ require('./bootstrap');
 Vue.use(Router);
 Vue.use(Vuex);
 
-let trans = {};
 let locale = document.documentElement.lang;
 axios.get(`/system/translations/${locale}`)
     .then((response) => {
-        trans = response.data
+        store.commit('SET_TRANS', response.data);
     });
 
 Vue.filter('capitalize', function (value) {
@@ -28,12 +27,23 @@ Vue.filter('translate', function (value) {
     if (!value) {
         return '';
     }
-    return trans.hasOwnProperty(value) ? trans[value] : value;
+    return store.state.trans.hasOwnProperty(value) ? store.state.trans[value] : value;
+});
+Vue.filter('truncate', function (value, length = 30) {
+    return value.length > length ? value.slice(0,length) + '...' : value;
 });
 
 const store = new Vuex.Store({
     modules: {translations},
-    state: {user: {}}
+    state: {
+        user: {},
+        trans: {}
+    },
+    mutations: {
+        SET_TRANS(state, trans) {
+            state.trans = trans;
+        }
+    }
 });
 
 let router = new Router({routes});

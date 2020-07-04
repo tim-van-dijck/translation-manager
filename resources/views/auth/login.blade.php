@@ -15,13 +15,12 @@
             <h1 class="text-center">Translation manager</h1>
             <h2 class="text-center">{{ trans('system.login') }}</h2>
             @if ($errors->any())
-                {{ var_dump($errors) }}
                 <div class="alert alert-danger" role="alert">
                     {{ trans('system.login_failed') }}
                 </div>
             @endif
             <div class="form-group">
-                <label for="email">{{ ucfirst(trans('system.username')) }}</label>
+                <label for="email">{{ trans('system.username') }}</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">
@@ -30,7 +29,7 @@
                     </div>
                     <input id="email" class="form-control" name="email" type="text">
                 </div>
-                <label for="password">{{ ucfirst(trans('system.password')) }}</label>
+                <label for="password">{{ trans('system.password') }}</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">

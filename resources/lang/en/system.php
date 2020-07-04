@@ -1,7 +1,11 @@
 <?php
 
 return [
-    'username' => 'username',
-    'password' => 'password',
-    'login' => 'Login'
+    'add' => 'Add',
+    'cancel' => 'Cancel',
+    'login' => 'Login',
+    'login_failed' => 'Login failed',
+    'password' => 'Password',
+    'save' => 'Save',
+    'username' => 'Username',
 ];

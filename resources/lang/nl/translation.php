@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'key' => 'Vertaalsleutel'
+    'key' => 'Vertaalsleutel',
+    'title' => 'Vertalingen',
 ];

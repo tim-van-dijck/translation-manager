@@ -13,4 +13,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', 'TranslationController@index');
         Route::post('/', 'TranslationController@store');
     });
+
+    Route::resource('languages', 'LanguageController', ['except' => ['create', 'edit']]);
 });

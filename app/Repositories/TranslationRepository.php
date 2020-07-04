@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Translation as TranslationModel;
+use App\Models\Translation as TranslationModel;
 use App\Entities\Translation;
-use App\TranslationKey;
+use App\Models\TranslationKey;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator as LengthAwarePaginatorInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
 

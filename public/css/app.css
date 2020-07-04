@@ -8,6 +8,21 @@
   color: #fff;
 }
 
+a > i.fas,
+a > i.far {
+  color: black;
+}
+
+a > i.fa-trash {
+  color: red;
+}
+
+th.table-cell--shrink,
+td.table-cell--shrink {
+  white-space: nowrap;
+  width: 1%;
+}
+
 body#login {
   background-image: url("https://timvandijck.com/assets/img/station.jpg");
   background-position: center;
