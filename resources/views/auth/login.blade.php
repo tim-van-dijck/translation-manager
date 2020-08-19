@@ -41,6 +41,7 @@
             </div>
             {{ csrf_field() }}
             <button type="submit" class="btn btn-green">{{ trans('system.login') }}</button>
+            <a href="{{ route('password.request') }}" class="btn btn-link">{{ trans('system.reset_password') }}</a>
         </form>
     </body>
 </html>

@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - .:/code:delegated
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/site.conf
+
+  php:
+    build: ./docker/php-fpm
+    volumes:
+      - .:/code:delegated
+      - ./docker/php-fpm/php-ini-overrides.ini:/usr/local/etc/php/conf.d/overrides.ini
+    working_dir: /code
+
+  mariadb:
+    image: mariadb:latest
+    ports:
+      - "3306:3306"
+    command: mysqld
+    volumes:
+      - ./data/mariadb:/var/lib/mysql:delegated
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=root123

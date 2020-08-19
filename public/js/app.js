@@ -37331,8 +37331,8 @@ var routes = [{
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /e/Documents/Development/translation-manager/code/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /e/Documents/Development/translation-manager/code/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/dieterpollier/Documents/projects/translation-manager/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/dieterpollier/Documents/projects/translation-manager/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
